@@ -1,0 +1,34 @@
+create database company;
+use company;
+create table emp (eid int,first_name varchar(25)
+,last_name varchar(25)
+, gender varchar(20)
+,city varchar(20),
+job varchar(50), salary decimal(6,2));
+rename table emp to info;
+describe info;
+select * from info;
+alter table info drop column  phone_number ;
+alter table info drop column  dob;
+alter table info modify column salary float;
+insert into info value(101,"Balaji","kumar","male","Salem","dataanalysis",25000),
+(102,"Nivetha","lakshmi","female","attur","ai devloper",30000),
+(103,"priya","vuishu","female","tirupur","cyber",45000),
+(104,"fahmeetha","Miss","female","trichy","UIUX",50000),
+(105,"ram","raj","male","salem","account",55000);
+
+select * from info;
+set sql_safe_updates=0;
+update info set city="chennai" where eid=103;
+delete from info where first_name="fahmeetha";
+select first_name,salary from info;
+select *from info where first_name ="Nivetha";
+select * from info where salary>40000 and salary >20000;
+update info set salary=salary+1000 where eid=105;
+select *from info where first_name like "r%";
+select *from info where last_name like "l%";
+select *from info where last_name like "_a%";
+
+
+
+
