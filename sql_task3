@@ -1,0 +1,45 @@
+create database comapny1;
+use comapny1;
+create table emp3(emp_id int, name varchar(20),department varchar(10),
+salary float,joining_date date);
+insert into emp3 value(101,"Arun","IT",45000,"2023-01-10"),
+(102,"Priya","HR",35000,"2022-06-15"),
+(103,"Ravi","IT",55000,"2021-03-20"),
+(104,"Divya","sales",40000,"2023-08-05"),
+(105,"Kiran","IT",60000,"2020-11-12");
+select *from emp3;
+select  avg(salary) as avg_salary from emp3 group by department;
+select min(salary) as avg_salary from emp3 group by department;
+select count(emp_id) as count from emp3 group by department;
+select department,count(department) from emp3 group by department ;
+select department,salary from emp3 where salary>45000;
+create table department(dept_id int,department varchar(50),manager varchar(50));
+select *from department;
+insert into department values(1,"IT","Suresh"),
+(2,"HR","Meera"),
+(3,"sales","kumar");
+select emp3.name,department.manager
+from department
+inner join emp3 on emp3.department=department.department;
+select emp3.name,department.manager 
+from department
+left join emp3 on emp3.department=department.department;
+select emp3.name,department.manager
+from department
+right join emp3 on emp3.department=department.department;
+
+select emp3.name,department.manager 
+from department
+left join emp3 on emp3.department=department.department
+union 
+select emp3.name,department.department 
+from department
+right join emp3 on emp3.department=department.department;
+select max(salary) from emp3 ;
+select max(salary)from emp3 where salary<(select max(salary) from emp3);
+
+
+
+
+
+
